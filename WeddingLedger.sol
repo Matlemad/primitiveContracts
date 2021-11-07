@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
-/** This primitive WeddingLedger contract still needs two improvements:
+/** This primitive WeddingLedger contract works fine for Catholics and derivatives. Needs two basic improvements:
  * 1) divorced addresses cannot marry again (see registeredAddresses mapping);
- * 2) it does not represent polygamous cultures (could be done via mapping (address => address[]));
+ * 2) people cannot marry more than one person. Couples cannot marry other couples etc. Might be done via mapping (address => address[]));
  * */
 
 import "@openzeppelin/contracts/access/Ownable.sol";
