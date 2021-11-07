@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
-/** This primitive WeddingLedger contract works fine for Catholics and derivatives. Needs two basic improvements:
- * 1) divorced addresses cannot marry again (see registeredAddresses mapping);
+/** This primitive WeddingLedger contract works fine for traditional marriage. Needs two basic improvements:
+ * 1) divorced addresses cannot re-marry, they should be able to (see registeredAddresses mapping);
  * 2) people cannot marry more than one person. Couples cannot marry other couples etc. Might be done via mapping (address => address[]));
  * */
 
