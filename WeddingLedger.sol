@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
-/** This primitive WeddingLedger contract works fine for traditional marriage. Needs two basic improvements:
- * 1) divorced addresses cannot re-marry, they should be able to (see registeredAddresses mapping);
- * 2) people cannot marry more than one person. Couples cannot marry other couples etc. Might be done via mapping (address => address[]));
- * */
-
 import "@openzeppelin/contracts/access/Ownable.sol";
+
+/** This is a primitive WeddingLedger contract still needs two improvements:
+ * 1) divorced addresses cannot marry again (see registeredAddresses mapping);
+ * 2) it does not represent polygamous cultures (could be done via mapping (address => address[]));
+ * */
 
 contract WeddingLedger is Ownable {
     
@@ -27,12 +27,12 @@ contract WeddingLedger is Ownable {
         bool marriageSettlement;
     }
     
-     /**
-     * array of officers,
-     * array to keep track of all couple's addresses,
-     * array for all the weddingIDHash
-     * array for all the couples
-     * */
+     
+     // array of officers,
+     // array to keep track of all couple's addresses,
+     // array for all the weddingIDHash
+     // array for all the couples
+     
     address[] private officers;
     bytes32[] private allWeddingHashes;
 
@@ -74,7 +74,7 @@ contract WeddingLedger is Ownable {
     
     // onlyOwner who can empower another officer
     function addOfficer(address _newOfficer) external onlyOwner {
-        require(!isOfficer[_newOfficer], "Officer not found");
+        require(!isOfficer[_newOfficer], "Officer already allowed");
         isOfficer[_newOfficer] = true;
         officers.push(_newOfficer);
     }
