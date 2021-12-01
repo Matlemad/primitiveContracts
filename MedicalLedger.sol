@@ -128,10 +128,10 @@ contract MedicalLedger is Ownable {
     }
  
     // only trusted addresses (Clients): pay the ViewPrice and retrieve a given Patient's exam URI
-    function payPerViewExam(address _patient, uint _examId) public payable isTrusted {
+    function payPerViewExam(address payable _patient, uint _examId, uint _price) public payable isTrusted {
         require(patients[_patient], "Patient doesn't exist!");
-        require(msg.value >= priceViewExam, 'You must pay to view exam results');
-        dataCoopTreasury.transfer(msg.value);
+        require(_price >= priceViewExam, 'You must pay to view exam results');
+        dataCoopTreasury.call{value: _price};
         emit ExamRequest(patientTestResults[_patient][_examId]);
     }
 }
